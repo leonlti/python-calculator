@@ -26,7 +26,7 @@ The calculation is: 300
 > pytest test_calculator.py
 ======= test session starts =======
 platform darwin -- Python 3.11.5, pytest-7.4.2, pluggy-1.3.0
-rootdir: /Users/gohj/Documents/SFA_calculator
+rootdir: /Users/xxx/Documents/SFA_calculator
 plugins: anyio-3.7.1
 collected 13 items                                                                                                                              
 
