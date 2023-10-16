@@ -3,11 +3,11 @@ from calculator import *
 try:
   selection = get_selection()
 except ValueError:
-    print("Sorry, invalid selection. BYEEEEE...")
+    print("Invalid selection.")
     quit()
 
-num1 = get_num("Provide FIRST value: ")
-num2 = get_num("Provide your SECOND value: ")
+num1 = get_num("First value: ")
+num2 = get_num("Second value: ")
                  
 if selection == 1:
   value = add(num1, num2)
