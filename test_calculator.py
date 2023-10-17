@@ -5,7 +5,8 @@ from pytest import approx
 
 # handles addition
 def test_addition():
-  assert add(2, 3) == 5
+  result = add (2,3)
+  assert result == 5
 
 # handles subtraction
 def test_subtraction():
