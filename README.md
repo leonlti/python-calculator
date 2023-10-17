@@ -43,4 +43,4 @@ test_calculator.py .............[100%]
 You can issue a ticket in GitHub under Issues. https://github.com/explicitworkload/python-calculator/issues
 
 
-# Finally fork and able to sync up with origin!
+# Finally have my 1st branch!
