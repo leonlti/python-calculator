@@ -79,25 +79,34 @@ def test_get_selection_valid_range(monkeypatch):
 def test_divide_zero_zero():
   assert divide(0, 0) == "Cannot divide by 0"
   
-  
+# Testing Add Calculator Function  
 @pytest.mark.parametrize("num1,num2,expectedResult", [(2, 3, 5), (-2, -3, -5), (2, -3, -1)])
 def test_param_add(num1, num2, expectedResult):
     result = calculator.add(num1, num2)
     assert result == expectedResult
 
+# Testing Subtract Calculator Function  
+@pytest.mark.parametrize("num1,num2,expectedResult", [(5, 3, 2), (-3, -2, -1), (3, -4, 7)])
+def test_param_subtract(num1, num2, expectedResult):
+    result = calculator.subtract(num1, num2)
+    assert result == expectedResult
+
 # Testing Multiply Calculator Function
 @pytest.mark.parametrize("num1,num2,expectedResult", [(2, 3, 6), (-2, -3, 6), (2, -3, -6)])
-def test_Multiply(num1, num2, expectedResult):
+def test_param_multiply(num1, num2, expectedResult):
     result = calculator.multiply(num1, num2)
     assert result == expectedResult
 
 # Testing Division Calculator Function
 @pytest.mark.parametrize("num1,num2,expectedResult", [(21, 3, 7), (-21, -3, 7), (-21, 3, -7)])
-def test_Divide(num1, num2, expectedResult):
+def test_param_divide(num1, num2, expectedResult):
     result = calculator.divide(num1, num2)
     assert result == expectedResult
 
-# Test Calculator does not take in more than 3 values
+# Test Calculator does not take in more than 2 values
+def test_moreThan2Values():
+    with pytest.raises(TypeError):
+        calculator(1, 2, 3)
 
 # Test Calculator when double 0 values entered
 def test_doubleZeroInput():
