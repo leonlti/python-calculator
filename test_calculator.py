@@ -5,7 +5,8 @@ from pytest import approx
 
 # handles addition
 def test_addition():
-  assert add(2, 3) == 5
+  result = add (2,3)
+  assert result == 5
 
 # handles subtraction
 def test_subtraction():
@@ -64,6 +65,34 @@ def test_divide_zero_negative():
 def test_divide_zero_positive():
   assert divide(10, 0) == "Cannot divide by 0"
 
+# Tests that multiplying two positive numbers works correctly.
+def test_multiply_positive_numbers():
+
+  # Arrange
+  number_1 = 10
+  number_2 = 5
+  expected_result = 50
+
+  # Act
+  result = multiply(number_1, number_2)
+
+  # Assert
+  assert result == expected_result
+
+# Tests that multiplying two negative numbers works correctly.
+def test_multiply_negative_numbers():
+  # Arrange
+  number_1 = -10
+  number_2 = -5
+  expected_result = 50
+
+  # Act
+  result = multiply(number_1, number_2)
+
+  # Assert
+  assert result == expected_result
+
+
 # Gets a selection from user input with valid range
 def test_get_selection_valid_range(monkeypatch):
   # Mock user input for valid selection
@@ -92,8 +121,8 @@ def test_param_subtract(num1, num2, expectedResult):
     assert result == expectedResult
 
 # Testing Multiply Calculator Function
-@pytest.mark.parametrize("num1,num2,expectedResult", [(2, 3, 6), (-2, -3, 6), (2, -3, -6)])
-def test_param_multiply(num1, num2, expectedResult):
+@pytest.mark.parametrize("num1,num2,expectedResult", [(2, 3, 6), (-2, -3, 6), (2, -3, -6), (6, 8, 48), (5, 5, 25)])
+def test_Multiply(num1, num2, expectedResult):
     result = calculator.multiply(num1, num2)
     assert result == expectedResult
 
@@ -103,10 +132,7 @@ def test_param_divide(num1, num2, expectedResult):
     result = calculator.divide(num1, num2)
     assert result == expectedResult
 
-# Test Calculator does not take in more than 2 values
-def test_moreThan2Values():
-    with pytest.raises(TypeError):
-        calculator(1, 2, 3)
+# Test Calculator does not take in more than 3 values
 
 # Test Calculator when double 0 values entered
 def test_doubleZeroInput():

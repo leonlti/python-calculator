@@ -1,5 +1,7 @@
 # About
-This calculator is written in python that does addition, subtraction, division and multiplication. 
+This calculator is written in python that does addition, subtraction, division and multiplication.
+
+> If you have questions, feel free to reach out to me.
 
 # Example Usage
 ```
@@ -39,3 +41,6 @@ test_calculator.py .............[100%]
 
 # Bugs/Features
 You can issue a ticket in GitHub under Issues. https://github.com/explicitworkload/python-calculator/issues
+
+
+# Additional Contact for after 6pm support, please contact Hong Jun. @hjhjhjhj2345
