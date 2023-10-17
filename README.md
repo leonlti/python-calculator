@@ -48,5 +48,3 @@ You can issue a ticket in GitHub under Issues. https://github.com/explicitworklo
 # Junhong is cool !
 
 # Edmund is a cooler.
-
-# Leon has a tumbler
