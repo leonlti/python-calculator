@@ -65,6 +65,34 @@ def test_divide_zero_negative():
 def test_divide_zero_positive():
   assert divide(10, 0) == "Cannot divide by 0"
 
+# Tests that multiplying two positive numbers works correctly.
+def test_multiply_positive_numbers():
+
+  # Arrange
+  number_1 = 10
+  number_2 = 5
+  expected_result = 50
+
+  # Act
+  result = multiply(number_1, number_2)
+
+  # Assert
+  assert result == expected_result
+
+# Tests that multiplying two negative numbers works correctly.
+def test_multiply_negative_numbers():
+  # Arrange
+  number_1 = -10
+  number_2 = -5
+  expected_result = 50
+
+  # Act
+  result = multiply(number_1, number_2)
+
+  # Assert
+  assert result == expected_result
+
+
 # Gets a selection from user input with valid range
 def test_get_selection_valid_range(monkeypatch):
   # Mock user input for valid selection
