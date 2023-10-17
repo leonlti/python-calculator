@@ -6,8 +6,8 @@ except ValueError:
     print("Invalid selection.")
     quit()
 
-num1 = get_num("First value: ")
-num2 = get_num("Second value: ")
+num1 = get_num("Eh, faster lah, give me the first value: ")
+num2 = get_num("Ok great, Second value pls: ")
 
 
 # try:

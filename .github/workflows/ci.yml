@@ -21,11 +21,10 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.11
-
       
       - name: Install dependencies
         run: |
-          pip install pytest pytest-mock
+          pip install pytest pytest-mock robotframework
 
       - name: Run pytest
         run: pytest -v test_calculator.py 
