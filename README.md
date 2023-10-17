@@ -1,5 +1,7 @@
 # About
-This calculator is written in python that does addition, subtraction, division and multiplication. 
+This calculator is written in python that does addition, subtraction, division and multiplication.
+
+> If you have questions, feel free to reach out to me.
 
 # Example Usage
 ```
