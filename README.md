@@ -43,4 +43,4 @@ test_calculator.py .............[100%]
 You can issue a ticket in GitHub under Issues. https://github.com/explicitworkload/python-calculator/issues
 
 
-# Additional Contact for after 6pm support, please contact Hong Jun. @hjhjhjhj2345
+# Finally fork and able to sync up with origin!
