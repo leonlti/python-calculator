@@ -115,7 +115,7 @@ def test_param_add(num1, num2, expectedResult):
     assert result == expectedResult
 
 # Testing Multiply Calculator Function
-@pytest.mark.parametrize("num1,num2,expectedResult", [(2, 3, 6), (-2, -3, 6), (2, -3, -6)])
+@pytest.mark.parametrize("num1,num2,expectedResult", [(2, 3, 6), (-2, -3, 6), (2, -3, -6), (6, 8, 48), (5, 5, 25)])
 def test_Multiply(num1, num2, expectedResult):
     result = calculator.multiply(num1, num2)
     assert result == expectedResult
@@ -125,8 +125,6 @@ def test_Multiply(num1, num2, expectedResult):
 def test_Divide(num1, num2, expectedResult):
     result = calculator.divide(num1, num2)
     assert result == expectedResult
-
-# Test Calculator does not take in more than 3 values
 
 # Test Calculator when double 0 values entered
 def test_doubleZeroInput():
