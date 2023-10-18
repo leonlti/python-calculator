@@ -24,11 +24,15 @@ jobs:
       with:
         repository: leonlti/python-calculator
 
-    #- name: Get TestScript from Remote Repository
-      #env:
-        #TOKEN: ${{ secrets.benrepo }} #secrets.repo_token
-      #run: |
-      #  curl -H "Authorization: token ${TOKEN}" https://raw.githubusercontent.com/leonlti/python-calculator/main/test_calculator.py -o test_calculator.py
+    - name: Get TestScript from Remote Repository
+      env:
+        TOKEN: ${{ secrets.GITHUB_TOKEN }} #secrets.repo_token
+      run: |
+        curl -H "Authorization: token ${TOKEN}" https://raw.githubusercontent.com/explicitworkload/python-calculator/main/test_calculator.py -o test_calculator2.py
+
+    - name: list our contents
+      run: |
+        ls
 
     - name: Start pytest Testing
       run: |
