@@ -1,0 +1,95 @@
+name: Release
+
+# Running your workflow only when a push of specific tags occurs
+# For example, this workflow will run when someone pushes a tag that starts with v.
+
+
+on: 
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      
+    - uses: actions/checkout@v2
+      with:
+        python-version: 3.11
+
+    - name: Install Libraries
+      run: |
+        pip install flake8 pytest pytest-cov robotframework
+
+    - name: Checkout Own Repo
+      uses: actions/checkout@v2
+      with:
+        repository: lowkh/DevOps2022Demo
+
+    - name: List Content
+      run: |
+        ls
+
+    - name: Start pytest
+      run: |
+        pytest test.py -v -cov --junitxml=report.xml
+
+    - if: ${{ failure() }}
+      uses: JasonEtco/create-an-issue@v2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        filename: .github/ISSUE_TEMPLATE.md
+  
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action/composite@v2
+      if: always()
+      with:
+        junit_files: "report.xml"
+
+    - name: Create Folder
+      run: mkdir downloads
+    
+    - name: Move Files
+      run: mv *.xml ./downloads
+      
+    - name: Upload document
+      uses: actions/upload-artifact@v2
+      with: 
+        name: assetDocuments
+        path: downloads
+
+    - name: Set Environment Version
+      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+
+    - name: Download Remote Information
+      uses: actions/download-artifact@v2
+      with:
+        name: assetDocuments
+
+    - name: Create Release
+      id: create-new-release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      with:
+        tag_name: ${{ env.RELEASE_VERSION }}
+        release_name: Release ${{env.RELEASE_VERSION }}
+
+    - name: Archive Site Content
+      uses: thedoctor0/zip-release@master
+      with:
+        filename: content.zip
+    
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+      with:
+        upload_url: ${{ steps.create-new-release.outputs.upload_url }}
+        asset_path: ./content.zip
+        asset_name: ${{ env.RELEASE_VERSION }}.zip
+        asset_content_type: applications/zip
