@@ -8,7 +8,6 @@ name: Release
 #   push:
 #     tags:
 #       - 'v*'
-name: Release
 
 on:
   push:
