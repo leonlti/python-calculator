@@ -3,15 +3,14 @@ name: Release
 # Running your workflow only when a push of specific tags occurs
 # For example, this workflow will run when someone pushes a tag that starts with v.
 
-
-# on: 
-#   push:
-#     tags:
-#       - 'v*'
-
-on:
+on: 
   push:
-    branches: [main]
+    tags:
+      - 'v*'
+
+# on:
+#   push:
+#     branches: [main]
 
 
 jobs:
