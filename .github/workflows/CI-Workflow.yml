@@ -38,8 +38,8 @@ jobs:
       run: |
         pytest test_calculator.py -v -cov --junitxml=report.xml
 
-    - name: Publish Test Results
-      uses: EnricoMi/publish-unit-test-result-action/composite@v2
-      if: always()
-      with:
-        junit_files: "report.xml"
+    # - name: Publish Test Results
+    #   uses: EnricoMi/publish-unit-test-result-action/composite@v2
+    #   if: always()
+    #   with:
+    #     junit_files: "report.xml"

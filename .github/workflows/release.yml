@@ -4,10 +4,10 @@ name: Release
 # For example, this workflow will run when someone pushes a tag that starts with v.
 
 
-on: 
-  push:
-    tags:
-      - 'v*'
+# on: 
+#   push:
+#     tags:
+#       - 'v*'
 
 jobs:
   build:
@@ -27,7 +27,7 @@ jobs:
     - name: Checkout Own Repo
       uses: actions/checkout@v2
       with:
-        repository: lowkh/DevOps2022Demo
+        repository: leonlti/python-calculator
 
     - name: List Content
       run: |
@@ -35,7 +35,7 @@ jobs:
 
     - name: Start pytest
       run: |
-        pytest test.py -v -cov --junitxml=report.xml
+        pytest test_calculator.py -v -cov --junitxml=report.xml
 
     - if: ${{ failure() }}
       uses: JasonEtco/create-an-issue@v2
