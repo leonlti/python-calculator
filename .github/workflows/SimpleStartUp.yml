@@ -20,4 +20,16 @@ jobs:
             ls
             echo Hello There!
 
+        - name: Checkout private repo remotely
+          uses: actions/checkout@v2
+          with:
+            repository: lowkh/hiddenRepo
+            #path: <folder of choice>
+            token: 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
+
+        - name: Show hidden files
+          run: |
+            ls -alch
+            cat README.md
+
        
