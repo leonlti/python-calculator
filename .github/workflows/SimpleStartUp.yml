@@ -25,7 +25,7 @@ jobs:
           with:
             repository: lowkh/hiddenRepo
             #path: <folder of choice>
-            token: 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
+            token: ${{ secrets.benrepo }}
 
         - name: Show hidden files
           run: |
