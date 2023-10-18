@@ -21,13 +21,13 @@ jobs:
     - name: Checkout Own Repo
       uses: actions/checkout@v2
       with:
-        repository: explicitworkload/helloworld-python
+        repository: leonlti/python-calculator
 
     - name: Get TestScript from Remote Repository
       env:
-        TOKEN: ${{ secrets.GITHUB_TOKEN }} #secrets.repo_token
+        TOKEN: ${{ secrets.benrepo }} #secrets.repo_token
       run: |
-        curl -H "Authorization: token ${TOKEN}" https://raw.githubusercontent.com/explicitworkload/SFA_RUN2_GIT/main/test_helloworld.py -o testetst.py
+        curl -H "Authorization: token ${TOKEN}" https://raw.githubusercontent.com/leonlti/python-calculator/main/test_calculator.py -o test_calculator.py
   
     - name: List Content from Repo
       run: |
