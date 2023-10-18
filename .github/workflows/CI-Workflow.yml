@@ -16,6 +16,7 @@ jobs:
 
     - name: Install Libraries
       run: |
+        pip install pytest
         pip install flake8 pytest pytest-cov robotframework
 
     - name: Checkout Own Repo
@@ -23,42 +24,16 @@ jobs:
       with:
         repository: leonlti/python-calculator
 
-    - name: Get TestScript from Remote Repository
-      env:
-        TOKEN: ${{ secrets.benrepo }} #secrets.repo_token
-      run: |
-        curl -H "Authorization: token ${TOKEN}" https://raw.githubusercontent.com/leonlti/python-calculator/main/test_calculator.py -o test_calculator.py
-  
-    - name: List Content from Repo
-      run: |
-        pwd
-        ls
+    #- name: Get TestScript from Remote Repository
+      #env:
+        #TOKEN: ${{ secrets.benrepo }} #secrets.repo_token
+      #run: |
+      #  curl -H "Authorization: token ${TOKEN}" https://raw.githubusercontent.com/leonlti/python-calculator/main/test_calculator.py -o test_calculator.py
 
     - name: Start pytest Testing
       run: |
         pytest test_calculator.py -v -cov --junitxml=report.xml
 
-    - if: ${{ failure() }}
-      name: Create Issue on Failed workflow
-      uses: dacbd/create-issue-action@main
-      with:
-        token: ${{ github.token }}
-        title: Action Workflow Failed.
-        body: |
-          ### Context
-          [Failed Run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
-          [Codebase](https://github.com/${{ github.repository }}/tree/${{ github.sha }})
-          Workflow name - `${{ github.workflow }}`
-          Job -           `${{ github.job }}`
-          status -        `${{ job.status }}`
-          assignees: leonlti
-    
-    # - uses: JasonEtco/create-an-issue@v2
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #   with:
-    #     filename: .github/ISSUE_TEMPLATE.md
-  
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action/composite@v2
       if: always()
